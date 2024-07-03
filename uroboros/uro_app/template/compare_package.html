@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uroboros 2.0</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/static/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/static/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="/static/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/plugins/adminlte/adminlte.min.css">
+
+<!--script src="js/yepnope.js"></script>
+<script src="js/launcher.js"></script-->
+<style>
+
+  ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+  .ll {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  justify-content: space-between; /* | space-between | space-around | space-evenly | star*/
+}
+
+.check{
+flex:10%;
+background: #007bff82;
+   border-radius: 30px;
+   padding: 10px;
+   margin: 10px;
+}
+    .card {
+flex: 90%;
+}
+
+.check_row{
+display: flex; /* or inline-flex */
+  flex-direction: column;
+  height:320px;
+}
+.check{
+display: flex; /* or inline-flex */
+  flex-direction: column;
+  height:320px;
+
+}
+
+.check input[type="submit"] {
+display: block;
+    margin-left: auto;
+    margin-right: auto;
+   background: #007bff;
+   color: white;
+}
+  .check.input[type="checkbox"] {
+    display:none;
+    justify-content: center
+}
+.check.input[type="checkbox"] + label span {
+    display:inline-block;
+    width:25px;
+    height:25px;
+    justify-content: center
+    background:url(check_radio_sheet.png) left top no-repeat;
+    cursor:pointer;
+}
+.check.input[type="checkbox"]:checked + label span {
+    background:url(check_radio_sheet.png) -19px top no-repeat;
+    justify-content: center
+}
+</style>
+</head>
+<body class="hold-transition layout-top-nav text-sm">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="/static/img/uroboros512.png" alt="Uroboros Logo" height="512" width="512">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-light navbar-white">
+    <!--div class="container"-->
+      <a href="template/index.html" class="navbar-brand">
+        <img src="/static/img/uroboros64.jpg" alt="Uroboros Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light">Uroboros</span>
+      </a>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fas fa-comments"></i>
+            <span class="badge badge-danger navbar-badge">3</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="/static/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Brad Diesel
+                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">Call me whenever you can...</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="/static/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    John Pierce
+                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">I got your message bro</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="/static/img/uer3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Nora Silvester
+                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">The subject goes here</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <span class="badge badge-warning navbar-badge">15</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-header">15 Notifications</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> 4 new messages
+              <span class="float-right text-muted text-sm">3 mins</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i> 8 friend requests
+              <span class="float-right text-muted text-sm">12 hours</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-file mr-2"></i> 3 new reports
+              <span class="float-right text-muted text-sm">2 days</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
+              class="fas fa-th-large"></i></a>
+        </li>
+      </ul>
+    <!--/div-->
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+             <ul class="breadcrumb">
+          <li id="doth"><a href="/projects"></a></li>
+              <li id="doth1" ><a href="/projects/{{packages[-1].prj_id}}/assembly"></a></li>
+              <li>Сравнение сборок</li>
+              </ul>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <h5 class="m-0">Сравнение сборок</h5>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div>
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <form method="POST" action="">
+      <div class="container-fluid">
+      <div class="ll">
+        <div class="card">
+
+          <div class="card-body">
+
+            <table id="example1" class="table table-bordered table-striped table-sm">
+                  <thead>
+                  <tr>
+                    <th>Имя пакета</th>
+                    <th> пред версия пакета</th>
+                    <th>пред дата</th>
+                    <th>Статус</th>
+                    <th>версия пакета</th>
+                    <th>дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for pkg in packages %}
+                  {% if "prj_id" not in pkg %}
+   <tr class={{pkg.ss}}>
+
+     <td class="dtr-control sorting_1">{{ pkg.pkg_name }}</td>
+      <td>{{ pkg.pkg_ver}}</td>
+     <td>{{ pkg.assm_date}}</td>
+     <td>{{ pkg.vers_status}}</td>
+     <td>{{ pkg.curr_vers}}</td>
+     <td>{{ pkg.curr_date}}</td>
+   </tr>
+        {% endif %}
+   {% endfor %}
+                  </tbody>
+                  <tfoot>
+<tr>
+                    <th>Имя пакета</th>
+                    <th> пред версия пакета</th>
+                    <th>пред дата</th>
+                    <th>Статус</th>
+                    <th>версия пакета</th>
+                    <th>дата</th>
+                  </tr>
+                  </tfoot>
+                </table>
+
+          </div>
+
+        </div>
+        <div class="check_row">
+          <div class="check">
+          <div>
+            <label><span></span>Сборки</label>
+            </div>
+          <div>
+          <input id="h" type="checkbox" class="d" name='current' value="current">
+          <label for="h"><span></span>Текущая</label>
+            </div>
+            <div>
+        <input id="h1" type="checkbox" class="d" name='prev' value="prev">
+          <label for="h1"><span></span>Предыдущая</label>
+              </div>
+          </div>
+
+            <div class="check">
+              <div>
+            <label><span></span>Статус</label>
+            </div>
+              <div>
+        <input id="h2" type="checkbox" class="d" name='повышен' value="повышен">
+          <label for="h2"><span></span>повышен</label>
+                </div>
+                <div>
+        <input id="h3" type="checkbox" class="d" name='понижен' value="понижен">
+          <label for="h3"><span></span>понижен</label>
+                  </div>
+                  <div>
+        <input id="h4" type="checkbox" class="d" name='неизменен' value="неизменен">
+          <label for="h4"><span></span>неизменен</label>
+                    </div>
+                    <div>
+        <input id="h5" type="checkbox" class="d" name='удален' value="удален">
+          <label for="h5"><span></span>удален</label>
+                      </div>
+                      <div>
+        <input id="h6" type="checkbox" class="d" name='добавлен' value="добавлен">
+          <label for="h6"><span></span>добавлен</label>
+                        </div>
+              </div>
+          <div class="check">
+          <div>
+          <input type="submit" name='cancel' value="Отправить" onclick="shHide()">
+            </div>
+          </div>
+          </div>
+      </div>
+
+      </div>
+      </form>
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      В разработке
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2021-2022 <a href="https://">NPPCT</a>.</strong> All rights reserved.
+  </footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<!--script src="plugins/jquery-ui/jquery-ui.min.js"></script-->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!--script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script-->
+<!-- Bootstrap 4 -->
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/plugins/adminlte/adminlte.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/static/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/static/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/static/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/static/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/static/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/static/plugins/jszip/jszip.min.js"></script>
+<script src="/static/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/static/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/static/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/static/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/static/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+
+  $(document).ready(function(){
+  $('.answer_box').click(function(e) {
+    // добавляем класс блоку, чтобы сделать красивый чекбокс
+    $(this).toggleClass('checked');
+    // если данные чекбокса нам нужны при отправке формы, то отмечаем и сам чекбокс
+    if ($('input', this).is(':checked'))
+      $('input', this).prop('checked', false);
+    else
+      $('input', this).prop('checked', true);
+    e.preventDefault();
+  });
+});
+
+  var path = document.getElementById('doth');
+   path.querySelector('a').innerHTML = sessionStorage.getItem('prj_name');
+
+   var path = document.getElementById('doth1');
+    path.querySelector('a').innerHTML = sessionStorage.getItem('assm_date');
+
+
+  let input = document.getElementsByClassName("d");
+  for(let l=0; l<input.length; l++){
+
+      document.getElementById(input[l].id).checked = Boolean(sessionStorage.getItem(input[l].id));
+  }
+
+
+  function shHide() {
+  for(let l=0; l<input.length; l++){
+      if (document.getElementById(input[l].id).checked == true)
+      {
+      sessionStorage.setItem(input[l].id, 1);
+      }
+      else{
+      sessionStorage.setItem(input[l].id, "");
+      }
+  }
+
+}
+
+
+</script>
+</body>
+</html>
