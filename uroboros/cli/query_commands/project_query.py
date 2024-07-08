@@ -5,8 +5,8 @@
 import json
 import pprint
 
-from cli.query_commands.base_query import BaseQuery, time_decorator
-from api.query_commands.project_query import ProjectApi
+from uroboros.cli.query_commands.base_query import BaseQuery, time_decorator
+from uroboros.api.query_commands.project_query import ProjectApi
 
 
 class ProjectQuery(BaseQuery):

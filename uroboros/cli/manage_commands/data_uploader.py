@@ -4,8 +4,8 @@ import re
 import tarfile
 from abc import ABC
 
-from cli.manage_commands.base_uploader import time_decorator
-from cli.manage_commands.file_uploader import FileUploader
+from uroboros.cli.manage_commands.base_uploader import time_decorator
+from uroboros.cli.manage_commands.file_uploader import FileUploader
 
 
 class DataUploader(FileUploader, ABC):

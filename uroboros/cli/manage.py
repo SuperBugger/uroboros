@@ -1,10 +1,10 @@
 import argparse
 
-from cli.baseapp import BaseApp
-from cli.manage_commands.assembly_uploader import AssemblyUploader
-from cli.manage_commands.changelog_parser import ChangelogUploader
-from cli.manage_commands.pkg_uploader import PkgUploader
-from cli.manage_commands.project_uploader import ProjectUploader
+from uroboros.cli.baseapp import BaseApp
+from uroboros.cli.manage_commands.assembly_uploader import AssemblyUploader
+from uroboros.cli.manage_commands.changelog_parser import ChangelogUploader
+from uroboros.cli.manage_commands.pkg_uploader import PkgUploader
+from uroboros.cli.manage_commands.project_uploader import ProjectUploader
 
 
 def required_length(nmin, nmax):

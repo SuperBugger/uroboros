@@ -5,8 +5,8 @@
 import json
 import pprint
 
-from api.query_commands.changelog_query import ChangelogApi
-from cli.query_commands.base_query import BaseQuery
+from uroboros.api.query_commands.changelog_query import ChangelogApi
+from uroboros.cli.query_commands.base_query import BaseQuery
 
 
 class ChangelogQuery(BaseQuery):

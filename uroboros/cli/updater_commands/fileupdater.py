@@ -4,7 +4,7 @@ from datetime import datetime
 
 import requests as requests
 
-from cli.updater_commands.baseupdater import Updater
+from uroboros.cli.updater_commands.baseupdater import Updater
 
 
 class FileUpdater(Updater, ABC):

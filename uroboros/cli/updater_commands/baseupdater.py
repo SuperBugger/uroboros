@@ -3,7 +3,7 @@ import os
 from abc import ABC, abstractmethod
 from datetime import datetime
 
-from cli.updater_commands.uptable import UpTableKeyed, UpTable
+from uroboros.cli.updater_commands.uptable import UpTableKeyed, UpTable
 
 
 class UpdaterError(Exception):

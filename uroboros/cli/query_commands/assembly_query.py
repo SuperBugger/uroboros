@@ -5,8 +5,8 @@
 import json
 import pprint
 
-from api.query_commands.assembly_query import AssemblyApi
-from cli.query_commands.base_query import BaseQuery
+from uroboros.api.query_commands.assembly_query import AssemblyApi
+from uroboros.cli.query_commands.base_query import BaseQuery
 
 
 class AssemblyQuery(BaseQuery):

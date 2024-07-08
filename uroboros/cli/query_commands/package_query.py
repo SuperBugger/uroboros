@@ -6,8 +6,8 @@
 import json
 import pprint
 
-from api.query_commands.package_query import PackageApi
-from cli.query_commands.base_query import BaseQuery, time_decorator
+from uroboros.api.query_commands.package_query import PackageApi
+from uroboros.cli.query_commands.base_query import BaseQuery, time_decorator
 
 
 # pkg_vrs_id and date

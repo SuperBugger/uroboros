@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 from abc import ABC
 from datetime import datetime
 
-from cli.updater_commands.fileupdater import FileUpdater
+from uroboros.cli.updater_commands.fileupdater import FileUpdater
 
 
 class XmlUpdater(FileUpdater, ABC):

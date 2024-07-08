@@ -14,12 +14,12 @@ import os
 import re
 from datetime import datetime
 
-from cli.manage_commands.base_uploader import time_decorator
-from cli.manage_commands.data_uploader import DataUploader
-from cli.manage_commands.pkg_uploader import PkgUploader
-from cli.manage_commands.project_uploader import ProjectUploader
+from uroboros.cli.manage_commands.base_uploader import time_decorator
+from uroboros.cli.manage_commands.data_uploader import DataUploader
+from uroboros.cli.manage_commands.pkg_uploader import PkgUploader
+from uroboros.cli.manage_commands.project_uploader import ProjectUploader
 
-from api.manage_commands.assembly_uploader import AssemblyUploaderApi
+from uroboros.api.manage_commands.assembly_uploader import AssemblyUploaderApi
 
 
 class AssemblyUploader(DataUploader):

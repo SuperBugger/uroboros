@@ -4,7 +4,7 @@ python3 -m uroboros.cli.update bdu -u --noclean
 python3 -m uroboros.cli.update bdu
 """
 
-from cli.updater_commands.xmlupdater import XmlUpdater
+from uroboros.cli.updater_commands.xmlupdater import XmlUpdater
 from datetime import datetime
 
 

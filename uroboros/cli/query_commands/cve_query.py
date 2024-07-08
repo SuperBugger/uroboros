@@ -7,8 +7,8 @@
 import json
 import pprint
 
-from api.query_commands.cve_query import CveApi
-from cli.query_commands.base_query import BaseQuery, time_decorator
+from uroboros.api.query_commands.cve_query import CveApi
+from uroboros.cli.query_commands.base_query import BaseQuery, time_decorator
 
 
 class CveQuery(BaseQuery):

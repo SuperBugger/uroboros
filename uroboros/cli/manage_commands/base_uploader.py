@@ -2,7 +2,7 @@ import os
 from abc import ABC, abstractmethod
 from datetime import datetime
 
-from cli.manage_commands.table import Table
+from uroboros.cli.manage_commands.table import Table
 
 
 def time_decorator(function_to_decorate):

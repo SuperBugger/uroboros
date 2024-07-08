@@ -1,11 +1,11 @@
 import argparse
 
-from cli.baseapp import BaseApp
-from cli.query_commands.assembly_query import AssemblyQuery
-from cli.query_commands.changelog_query import ChangelogQuery
-from cli.query_commands.cve_query import CveQuery
-from cli.query_commands.package_query import PackageQuery
-from cli.query_commands.project_query import ProjectQuery
+from uroboros.cli.baseapp import BaseApp
+from uroboros.cli.query_commands.assembly_query import AssemblyQuery
+from uroboros.cli.query_commands.changelog_query import ChangelogQuery
+from uroboros.cli.query_commands.cve_query import CveQuery
+from uroboros.cli.query_commands.package_query import PackageQuery
+from uroboros.cli.query_commands.project_query import ProjectQuery
 
 
 def required_length(nmin, nmax):

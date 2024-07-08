@@ -6,7 +6,7 @@ python3 -m uroboros.cli.update debtracker
 
 """
 
-from cli.updater_commands.jsonupdater import JsonUpdater
+from uroboros.cli.updater_commands.jsonupdater import JsonUpdater
 from datetime import datetime
 
 

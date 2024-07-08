@@ -1,7 +1,7 @@
 import json
 from abc import ABC
 
-from cli.updater_commands.fileupdater import FileUpdater
+from uroboros.cli.updater_commands.fileupdater import FileUpdater
 
 
 class JsonUpdater(FileUpdater, ABC):

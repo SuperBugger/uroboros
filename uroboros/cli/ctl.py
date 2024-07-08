@@ -1,8 +1,8 @@
-from ..cli.baseapp import BaseApp
-from ..cli.ctl_commands.backup import BackupCommand
-from ..cli.ctl_commands.cleansing import CleanCommand
-from ..cli.ctl_commands.initdb import InitCommand
-from ..cli.ctl_commands.restore import RestoreCommand
+from uroboros.cli.baseapp import BaseApp
+from uroboros.cli.ctl_commands.backup import BackupCommand
+from uroboros.cli.ctl_commands.cleansing import CleanCommand
+from uroboros.cli.ctl_commands.initdb import InitCommand
+from uroboros.cli.ctl_commands.restore import RestoreCommand
 
 
 class CtlUtility(BaseApp):

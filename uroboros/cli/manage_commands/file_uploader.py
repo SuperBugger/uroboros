@@ -6,7 +6,7 @@ import warnings
 
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')
 
-from cli.manage_commands.base_uploader import BaseUploader, time_decorator
+from uroboros.cli.manage_commands.base_uploader import BaseUploader, time_decorator
 
 
 class FileUploader(BaseUploader, ABC):

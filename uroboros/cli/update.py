@@ -1,8 +1,8 @@
 import sys
 
-from cli.baseapp import BaseApp
-from cli.updater_commands.bdu_updater import BduUpdater
-from cli.updater_commands.debtracker_updater import TrackerUpdater
+from uroboros.cli.baseapp import BaseApp
+from uroboros.cli.updater_commands.bdu_updater import BduUpdater
+from uroboros.cli.updater_commands.debtracker_updater import TrackerUpdater
 
 
 class UpdaterUtility(BaseApp):

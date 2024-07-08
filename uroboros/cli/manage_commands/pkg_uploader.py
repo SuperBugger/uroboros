@@ -10,10 +10,10 @@ import re
 import shutil
 from glob import glob
 
-from cli.manage_commands.base_uploader import time_decorator
-from cli.manage_commands.changelog_parser import ChangelogUploader
+from uroboros.cli.manage_commands.base_uploader import time_decorator
+from uroboros.cli.manage_commands.changelog_parser import ChangelogUploader
 
-from api.manage_commands.pkg_uploader import PkgUploaderApi
+from uroboros.api.manage_commands.pkg_uploader import PkgUploaderApi
 
 
 class PkgUploader(ChangelogUploader):
