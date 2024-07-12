@@ -1,37 +1,59 @@
-from flask import Flask, jsonify
-import psycopg2
-from psycopg2.extras import RealDictCursor
+# app.py
+from flask import Flask, request, jsonify
+from api.query_commands.package_query import PackageApi
+from configure import NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB
+from connection import DbHelper
 
 app = Flask(__name__)
 
-DB_SETTINGS = {
-    'dbname': 'uroboros',
-    'user': 'owner',
-    'password': '1111',
-    'host': 'localhost',
-    'port': '5432'
-}
+package_api = PackageApi(DbHelper(NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB))
 
 
-def get_db_connection():
-    conn = psycopg2.connect(**DB_SETTINGS)
-    return conn
+@app.route('/')
+def index():
+    return "Welcome to the Package API"
 
 
-@app.route('/api/data/<section_id>', methods=['GET'])
-def get_data(section_id):
-    conn = get_db_connection()
-    cursor = conn.cursor(cursor_factory=RealDictCursor)
+@app.route('/delete_table', methods=['POST'])
+def delete_table():
+    data = request.json
+    table_name = data.get('table_name')
+    if not table_name:
+        return jsonify({'error': 'table_name is required'}), 400
 
-    query = f"SELECT * FROM {section_id};"
+    try:
+        package_api.delete_table(table_name)
+        return jsonify({'status': 'success'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
-    cursor.execute(query)
-    data = cursor.fetchall()
 
-    cursor.close()
-    conn.close()
+@app.route('/joint_assm', methods=['POST'])
+def joint_assm():
+    data = request.json
+    assm_id = data.get('assm_id')
+    if not assm_id:
+        return jsonify({'error': 'assm_id is required'}), 400
 
-    return jsonify(data)
+    try:
+        package_api.joint_assm(data)
+        return jsonify({'status': 'success'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/get_difference', methods=['POST'])
+def get_difference():
+    data = request.json
+    assm_id = data.get('assm_id')
+    if not assm_id:
+        return jsonify({'error': 'assm_id is required'}), 400
+
+    try:
+        package_api.get_difference(data)
+        return jsonify({'status': 'success'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':
