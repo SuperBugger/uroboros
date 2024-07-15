@@ -56,5 +56,14 @@ def get_difference():
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/projects', methods=['GET'])
+def get_projects():
+    try:
+        projects = package_api.get_projects()
+        return jsonify({'projects': projects}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 if __name__ == '__main__':
     app.run(debug=True)

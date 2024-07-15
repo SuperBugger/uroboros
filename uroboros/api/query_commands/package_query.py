@@ -7,7 +7,8 @@ class PackageApi(BaseApi):
         super().__init__()
         self._db_helper = db_helper
         self.table_name = "repositories.pkg_version"
-        self.name_col = ["pkg_vrs_id", "author_name", "assm_id", 'assm_date_created', "prj_name", "prj_id", "pkg_name", "version", "date_created"]
+        self.name_col = ["pkg_vrs_id", "author_name", "assm_id", 'assm_date_created', "prj_name", "prj_id", "pkg_name",
+                         "version", "date_created"]
         self.fields = ("rpv.pkg_vrs_id, rpv.author_name, ra.assm_id, ra.assm_date_created, "
                        "rpp.prj_name, ra.prj_id, rp.pkg_name, rpv.version, rpv.pkg_date_created")
         self.join += (" rpv join repositories.assm_pkg_vrs rapv on rapv.pkg_vrs_id = rpv.pkg_vrs_id"
@@ -90,6 +91,39 @@ class PackageApi(BaseApi):
             self.query = sql
         except Exception as e:
             self._error(f" while get difference {e}")
+
+    @time_decorator
+    def get_projects(self):
+        try:
+            sql = """
+                    SELECT 
+                        p.prj_name, 
+                        a.arch_name, 
+                        r.rel_name, 
+                        p.vendor, 
+                        p.prj_desc 
+                    FROM 
+                        repositories.project p
+                    JOIN 
+                        repositories.architecture a ON p.arch_id = a.arch_id
+                    JOIN 
+                        repositories.release r ON p.rel_id = r.rel_id
+                """
+            result = self._db_helper.query(sql)
+            projects = [
+                {
+                    'prj_name': row[0],
+                    'arch_name': row[1],
+                    'rel_name': row[2],
+                    'vendor': row[3],
+                    'prj_desc': row[4]
+                }
+                for row in result
+            ]
+            return projects
+        except Exception as e:
+            self._error(f" while fetching projects {e}")
+            return []
 
     def run(self, assm):
         try:
