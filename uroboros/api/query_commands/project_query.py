@@ -20,6 +20,39 @@ class ProjectApi(BaseApi):
         else:
             self.where = ""
 
+    @time_decorator
+    def get_projects(self):
+        try:
+            sql = """
+                    SELECT
+                        p.prj_name,
+                        a.arch_name,
+                        r.rel_name,
+                        p.vendor,
+                        p.prj_desc
+                    FROM
+                        repositories.project p
+                    LEFT JOIN
+                        repositories.architecture a ON p.arch_id = a.arch_id
+                    LEFT JOIN
+                        repositories.release r ON p.rel_id = r.rel_id
+                """
+            result = self._db_helper.query(sql)
+            projects = [
+                {
+                    'prj_name': row[0],
+                    'arch_name': row[1],
+                    'rel_name': row[2],
+                    'vendor': row[3],
+                    'prj_desc': row[4]
+                }
+                for row in result
+            ]
+            return projects
+        except Exception as e:
+            self._error(f" while fetching projects {e}")
+            return []
+
     def run(self, prj_id):
         try:
             self.create_query(prj_id)

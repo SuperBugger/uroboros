@@ -124,10 +124,14 @@ section {
     align-items: center;
 }
 
-.sidebar-open-btn{
+.sidebar-open-btn {
     margin-left: 15px;
 }
 
-.m-auto{
+.m-auto {
     margin: auto;
+}
+
+.selected {
+    background-color: #04233161 !important;
 }
