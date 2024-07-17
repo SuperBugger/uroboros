@@ -3,10 +3,9 @@ from abc import ABC
 from bs4 import BeautifulSoup
 import requests
 import warnings
+from .base_uploader import BaseUploader, time_decorator
 
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')
-
-from uroboros.api.manage_commands.base_uploader import BaseUploader, time_decorator
 
 
 class FileUploader(BaseUploader, ABC):

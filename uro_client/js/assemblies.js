@@ -1,8 +1,7 @@
-// assemblies.js
 $(document).ready(function(){
-    var project_name = window.location.pathname.split('/')[1];  // Получение имени проекта из URL
+    var project_name = window.location.pathname.split('/')[1];
     $.ajax({
-        url: `http://127.0.0.1:5000/${project_name}/get_assemblies`,  // Используем правильный порт для бэкенда
+        url: `http://127.0.0.1:5000/${project_name}/get_assemblies`,
         type: 'GET',
         success: function(response) {
             if(response.assemblies) {

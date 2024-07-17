@@ -14,10 +14,10 @@ import os
 import re
 from datetime import datetime
 
-from uroboros.api.manage_commands.base_uploader import time_decorator
-from uroboros.api.manage_commands.data_uploader import DataUploader
-from uroboros.api.manage_commands.pkg_uploader import PkgUploaderApi
-from uroboros.api.manage_commands.project_uploader import ProjectUploaderApi
+from .base_uploader import time_decorator
+from .data_uploader import DataUploader
+from .pkg_uploader import PkgUploaderApi
+from .project_uploader import ProjectUploaderApi
 
 
 class AssemblyUploaderApi(DataUploader):

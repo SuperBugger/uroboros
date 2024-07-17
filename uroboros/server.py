@@ -7,12 +7,14 @@ from api.query_commands.package_query import PackageApi
 from configure import NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB
 from connection import DbHelper
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../uro_client/templates')
 CORS(app, resources={r"/*": {"origins": "http://localhost:8000"}})
 
-project_api = ProjectApi(DbHelper(NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB))
-assembly_api = AssemblyApi(DbHelper(NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB))
-package_api = PackageApi(DbHelper(NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB))
+db_helper = DbHelper(NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB)
+
+project_api = ProjectApi(db_helper)
+assembly_api = AssemblyApi(db_helper)
+package_api = PackageApi(db_helper)
 
 
 @app.route('/')
@@ -75,7 +77,7 @@ def get_projects():
 def get_assemblies(project_name):
     try:
         prj_id_query = "SELECT prj_id FROM repositories.project WHERE prj_name = %s"
-        prj_id_result = db_helper.query(prj_id_query, (project_name,))
+        prj_id_result = db_helper.query((prj_id_query, (project_name,)))
         if not prj_id_result:
             return jsonify({'error': 'Project not found'}), 404
 

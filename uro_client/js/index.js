@@ -54,8 +54,7 @@ $(document).ready(function () {
     });
 });
 
-// assemblies.js
-$(document).ready(function(){
+/*$(document).ready(function(){
     var project_name = "{{ project_name }}";
     $.ajax({
         url: `http://127.0.0.1:5000/${project_name}/assemblies`,
@@ -83,4 +82,4 @@ $(document).ready(function(){
             console.error('Error fetching assemblies:', error);
         }
     });
-});
+});*/

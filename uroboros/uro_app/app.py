@@ -3,7 +3,7 @@ import pathlib
 import falcon
 
 from uro_app.resources import *
-from uroboros.uro_app.resources import ChooseAddProjectResource, ProjectWrongPathResource, ProjectExisttResource, \
+from .resources import ChooseAddProjectResource, ProjectWrongPathResource, ProjectExisttResource, \
     ProjectAddPathResource, ProjectAddInputResource
 
 app = falcon.App()

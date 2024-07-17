@@ -7,8 +7,8 @@ python3 -m uroboros.cli.manage prj --delete --project <prj_id>
 """
 import os
 import re
-from uroboros.api.manage_commands.base_uploader import time_decorator
-from uroboros.api.manage_commands.data_uploader import DataUploader
+from .base_uploader import time_decorator
+from .data_uploader import DataUploader
 
 
 class ProjectUploaderApi(DataUploader):

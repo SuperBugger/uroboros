@@ -2,7 +2,7 @@ import os
 import re
 from glob import glob
 
-from uroboros.api.manage_commands.data_uploader import DataUploader
+from .data_uploader import DataUploader
 
 flag = 0
 flag_end = 0
