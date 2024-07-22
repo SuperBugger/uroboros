@@ -2,11 +2,15 @@ import json
 import os
 from abc import ABC, abstractmethod
 from datetime import datetime
+import logging
+
+# Настройка логирования
+logging.basicConfig(level=logging.DEBUG)
 
 
 def time_decorator(function_to_decorate):
     def the_wrapper_around_the_original_function(*args, **kwargs):
-        print(datetime.now(), f"while {function_to_decorate.__name__}")
+        logging.debug(f"{datetime.now()} while {function_to_decorate.__name__}")
         return function_to_decorate(*args, **kwargs)
 
     return the_wrapper_around_the_original_function
@@ -21,7 +25,7 @@ class QueryError(Exception):
 
     def __str__(self):
         if self.message:
-            return 'QueryError, this error is found while {} '.format(self.message)
+            return f'QueryError, this error is found while {self.message} '
         else:
             return 'QueryError'
 
@@ -34,7 +38,7 @@ class BaseApi(ABC):
         self.table_name = ""
         self.fields = ""
         self.name_col = ""
-        self.where = " where "
+        self.where = ""
         self.join = ""
         self.query = ""
 
@@ -50,25 +54,26 @@ class BaseApi(ABC):
         try:
             if build:
                 self.query = f"select {self.fields} from {self.table_name}"
-                if len(self.join) != 0:
+                if self.join:
                     self.query += self.join
-                if len(self.where) != 0:
-                    self.query += self.where
+                if self.where:
+                    self.query += f" where {self.where}"
+            logging.debug(f"Executing query: {self.query}")
             table_info = self._db_helper.query(self.query)
             count = 0
-            if len(table_info) != 0:
+            if table_info:
                 for sttr in table_info:
                     if not t_id:
                         count += 1
                         self.tbl_dict[count] = {}
-                        for i in range(0, len(self.name_col)):
+                        for i in range(len(self.name_col)):
                             self.tbl_dict[count][self.name_col[i]] = str(sttr[i])
                     else:
                         self.tbl_dict[sttr[0]] = {}
                         for i in range(1, len(self.name_col)):
                             self.tbl_dict[sttr[0]][self.name_col[i]] = str(sttr[i])
-
         except Exception as e:
+            logging.error(f"Error while running query: {e}")
             self._error(e)
 
     @abstractmethod

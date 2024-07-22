@@ -2,15 +2,15 @@ import json
 import os
 import subprocess
 
-from api.manage_commands.assembly_uploader import AssemblyUploaderApi
-from api.manage_commands.project_uploader import ProjectUploaderApi
-from api.query_commands.assembly_query import AssemblyApi
-from api.query_commands.changelog_query import ChangelogApi
-from api.query_commands.cve_query import CveApi
-from api.query_commands.package_query import PackageApi
-from api.query_commands.project_query import ProjectApi
-from configure import NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB
-from connection import DbHelper
+from uroboros.api.manage_commands.assembly_uploader import AssemblyUploaderApi
+from uroboros.api.manage_commands.project_uploader import ProjectUploaderApi
+from uroboros.api.query_commands.assembly_query import AssemblyApi
+from uroboros.api.query_commands.changelog_query import ChangelogApi
+from uroboros.api.query_commands.cve_query import CveApi
+from uroboros.api.query_commands.package_query import PackageApi
+from uroboros.api.query_commands.project_query import ProjectApi
+from uroboros.configure import NAME_DB, USER_DB, PASSWORD_DB, HOST_DB, PORT_DB
+from uroboros.connection import DbHelper
 
 
 class Column(object):

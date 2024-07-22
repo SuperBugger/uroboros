@@ -1,5 +1,5 @@
 from ..query_commands.base_query import BaseApi
-
+import logging
 
 class AssemblyApi(BaseApi):
     def __init__(self, db_helper):
@@ -12,9 +12,9 @@ class AssemblyApi(BaseApi):
 
     def create_query(self, tbl_id):
         if tbl_id is not None:
-            self.where += f"prj_id = {tbl_id}"
+            self.where = f"prj_id = {tbl_id}"
         else:
-            self._error(" prj_id don't null")
+            self._error("prj_id can't be null")
 
     def run(self, prj_id):
         try:
@@ -22,4 +22,5 @@ class AssemblyApi(BaseApi):
             self.run_query()
             return self.tbl_dict
         except Exception as e:
+            logging.error(f"Failed to run assembly query: {e}")
             self._error(e)
